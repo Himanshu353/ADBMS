@@ -1,0 +1,19 @@
+create view himanshu as select empno,ename,sal from emp; //Create view
+
+create or replace view himanshu as select empno,ename,sal from emp; //Modify View
+
+create or replace view himanshu as select empno,ename,sal from emp with read only //Access this can't be changed..u have to create new view
+
+insert into himanshu values(101,'Himanshu',1000);
+
+select * from emp;
+
+select * from himanshu; // To display the view
+
+create or replace view himanshu(ENO) as select empno from emp; // To change column name of view
+
+create or replace view himanshu(ENO,NAME,SALARY) as select empno,ename,sal from emp; // For multiple columns
+
+create or replace view himanshu as select empno,ename,sal,e.deptno,dname from emp e,dept d where e.deptno=d.deptno; // to join two tables and display in a view
+
+insert into himanshu values(102,'Hk',1000,111,'CSE'); // Cannot change if data is not present in base table(dept)

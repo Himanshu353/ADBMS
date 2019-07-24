@@ -1,0 +1,36 @@
+create sequence h // This line is compulsory baaki sbki default values hoti hain hmare paas
+start with 1
+increment by 1 // 1,-1 cannot be zero
+maxvalue 100 //more than or equal to the start value
+minvalue 0 //less than or equal to the start value
+nocycle //can be cycle or nocycle to repeat values or not
+cache //cache for faster memory access if no cache -> direct communicate to main memory, also give size with cache
+order // order or nooder..a proper order is followed/maintained
+select * from user_sequences; // To display all custom sequences created
+
+--New Sequence Created--
+create sequence h2
+start with 1
+increment by 2
+maxvalue 20
+minvalue 0
+nocycle
+cache 20
+order
+
+CREATE TABLE students
+(
+ID number(10),
+NAME char(20)
+);
+
+insert into students values(h2.nextval,'Himanshu');
+insert into students values(h2.nextval,'Shubham');
+insert into students values(h2.nextval,'Ayush');
+insert into students values(h2.nextval,'Kashish');
+
+select * from students
+
+//nextval initaites the sequence to use it in the table
+//currval you go to shop and finish u go immediately again no one else comes then u are allocated same value
+select h2.nextval from dual // gives next value

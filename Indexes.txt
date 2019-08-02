@@ -1,0 +1,22 @@
+Sparse Indexing :- Checking records in a given range, direct jump to nearest index and the search is completed in lesser time.
+Dense Indexing :- Random Data Search refers to dense, each record is given an address, then the search is performed.
+If attribute in index table doesn't match then it will search the full table
+If the table is in a shuffle/random/unordered form then in that case dense indexing is performed due to randomisation and also backtracking is also not allowed.
+If Attribute Key doesn't match then the whole table needs to be searched.
+For Unique Index, the attribute key should be unique in the table itself.
+Unique Composite Index Table with multiple columns can be created if any one of the column is unique.
+
+Creating a Non-Unique Index:-(Any column can be considered as attribute key)
+create index index1 on EMP(ename); // For creating index for table(column_name)
+drop index index1 // To delete(drop) any index created by you
+select * from user_indexes // To see all indexes created till now
+create index index2 on EMP(ename,sal); // Creating index with multiple column(s)
+
+Creating Unique Index:-
+create unique index uindex1 on emp(ename); // It is checking that the column specified in not having duplicacy. It is not interessted that the column specified is a Primary key or not.
+create unique index uindex2 on emp(ename,hiredate); // Condition is that atleast one column should be unique.
+alter index uindex2 rename to myuindex1; // To rename index
+
+BitMap Index:-
+If we have data in any other format, to index that we use BitMap Indexing.
+create bitmapindex index_name on table_name(column_name);

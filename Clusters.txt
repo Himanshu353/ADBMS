@@ -1,0 +1,20 @@
+Cluster is a Database object thet stores data related to 2 or more tables in a single disk space/single memory location.
+They are made to perform JOIN operations.
+To save time of address-shifting in JOIN operations, we create a cluster. It saves time time by giving a common address to table(s).
+
+Creating Cluster:-
+3 steps
+1) Create Cluster
+2) Create Index on cluster
+3) Create Tables
+
+create cluster c1(d number(2)); // Name- c1, size- d
+create index ci1 on cluster c1; // To specify the tables
+create table t1(deptno number(2), dname varchar(20)) cluster c1(deptno);
+create table t2(empno number(3), ename varchar(20), dno number(2)) cluster c1(dno);
+insert into t1 values(10,'A');
+insert into t1 values(20,'B');
+insert into t2 values(101,'abc',10);
+insert into t2 values(102,'def',20);
+select rowid,deptno,dname from t1
+select rowid,empno,ename from t2
